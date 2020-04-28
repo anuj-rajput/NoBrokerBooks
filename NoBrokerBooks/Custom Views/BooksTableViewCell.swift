@@ -30,7 +30,8 @@ extension BooksTableViewCell: ReusableCellProtocol {
     static func configureCell<T>(tableView: UITableView, indexPath: IndexPath, object: T?) -> UITableViewCell {
         guard let book = object as? Book, let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? BooksTableViewCell else { fatalError(Constants.Errors.cellDequeue) }
         
-        cell.profileImage.af_setImage(withURL: book.imageURL)
+        cell.profileImage.image = Image(named: "book")
+        cell.profileImage?.af.setImage(withURL: book.imageURL)
         cell.title.text = book.title
         cell.author.text = book.author
         cell.genre.text = book.genre
